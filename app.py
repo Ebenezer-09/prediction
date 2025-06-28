@@ -85,7 +85,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Chemin du dataset
-DATASET_PATH = "/home/bakouan/Bureau/Ml/backend/donnees_minieres_5000_lignes.csv"
+DATASET_PATH = "donnees_minieres_5000_lignes.csv"
 
 @st.cache_data
 def load_and_prepare_data():
@@ -143,6 +143,9 @@ def load_and_prepare_data():
 
 # Initialisation des modèles
 if 'models' not in st.session_state:
+    st.session_state.models = {}
+
+if 'data' not in st.session_state:
     data_dict = load_and_prepare_data()
     if data_dict:
         # Entraînement des modèles
